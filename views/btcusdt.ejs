@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BTC/USDT Cryptocurrency Arbitrage</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="NavBar.css" type="text/css" />
+</head>
+<body>
+
+
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#ffffff">
+        <div id = "naver" class="container">
+            <div class="navbar-header">
+                <a  class="navbar-left"><img id="logo" src="Logo.jpg"> <span id="logoText">The Arbiter</span> </a><h6></h6>
+            </div>
+            <div>
+                <h5 id = "Intro">The Arbiter is a simple cryptocurrency arbitrage project that gather price data from 20 crytocurrency exchange and find de difference between the highest price and the lowest price. The project is using ccxt package with python in order to fetch market data and save it to an SQLite databe. The control and the view is done using node.js/Express/EJS.</h5>
+            </div>
+        </div>
+    </nav>
+<div id = 'table1'>
+    <table>
+        <th id = 'main'>Top margin </th>
+        <th>|  1 -  <%- (topList[0]['idPair'])%>: <%-parseFloat((topList[0]['marge'])).toFixed(2)%>% (<%- (topList[0]['idEx1'])%> vs <%- (topList[0]['idEx2'])%>)</th>
+        <th>|  2 -  <%- (topList[1]['idPair'])%>: <%-parseFloat((topList[1]['marge'])).toFixed(2)%>% (<%- (topList[1]['idEx1'])%> vs <%- (topList[1]['idEx2'])%>)</th>
+        <th>|  3 -  <%- (topList[2]['idPair'])%>: <%-parseFloat((topList[2]['marge'])).toFixed(2)%>% (<%- (topList[2]['idEx1'])%> vs <%- (topList[2]['idEx2'])%>)</th>
+        <th>|  4 -  <%- (topList[3]['idPair'])%>: <%-parseFloat((topList[3]['marge'])).toFixed(2)%>% (<%- (topList[3]['idEx1'])%> vs <%- (topList[3]['idEx2'])%>)</th>
+        <th>|  5 -  <%- (topList[4]['idPair'])%>: <%-parseFloat((topList[4]['marge'])).toFixed(2)%>% (<%- (topList[4]['idEx1'])%> vs <%- (topList[4]['idEx2'])%>)</th>
+    </table>
+
+</div>
+
+
+
+
+    <div id ="dropDown">
+        <select class="form-control" onchange="location = this.value;">
+            <option value="/btcusdt">BTC/USDT</option>
+            <option value="/ethusdt"><a href="ETHUSDT">ETH/USDT</a></option>
+            <option value="/trxusdt">TRX/USDT</option>
+            <option value="/ethbtc">ETH/BTC</option>
+            <option value="/xrpusdt">XRP/USDT</option>
+            <option value="/xrpbtc">XRP/BTC</option>
+            <option value="/ltcbtc">LTC/BTC</option>
+            <option value="/ltcusdt">LTC/USDT</option>
+            <option value="/neobtc">NEO/BTC</option>
+            <option value="/xmlusdt">XML/USDT</option>
+        </select>
+    </div>
+
+
+    <div id = "displayScreen">
+        <h1>Pair: BTC/USDT</h1>
+        <h2>Margin: <%- parseFloat(marge).toFixed(2)%>% </h2>
+        <h2>Difference: <%- (difference); %> </h2>
+        <h3>Highest closing: <%- (highPrice); %> (<%- (highName); %>)</h3>
+        <h3>Lowest closing: <%- (lowPrice); %> (<%- (lowName); %>)</h3>
+    </div>
+
+</body>
+</html>

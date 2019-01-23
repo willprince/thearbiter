@@ -1,0 +1,47 @@
+
+
+#logo{
+    height: 100px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+#logoText{
+    color: black;
+    font-size: 2em;
+}
+#table1{
+    padding-top: 100px;
+    background-color: black;
+
+}
+#table1 th, #main{
+    padding-left: 20px;
+    background-color: black;
+    color: white;
+}
+
+#Intro{
+    padding-top: 25px;
+    padding-left: 250px;
+    text-align: left;
+}
+
+#displayScreen{
+
+    padding-left: 33%;
+}
+
+#dropDown{
+
+    padding-top: 150px;
+    padding-left: 33%;
+    padding-right: 57%;
+}
+
+.btn-group{
+    color: black;
+}
+
+.bold {
+    font-weight: bold;
+}
