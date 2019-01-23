@@ -15,8 +15,12 @@
     "express": "^4.15.2"
   },
   "devDependencies": {
-    "request": "^2.81.0",
-    "tape": "^4.7.0"
+    "chart.js": "^2.7.3",
+    "express": "^4.16.4",
+    "http-server": "^0.11.1",
+    "json": "^9.0.6",
+    "sqlite3": "^4.0.6",
+    "ccxt": "^1.18.137"
   },
   "repository": {
     "type": "git",
