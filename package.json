@@ -11,20 +11,19 @@
     "test": "node test.js"
   },
   "dependencies": {
+    "ccxt": "^1.18.137",
     "chart.js": "^2.7.3",
-    "express": "^4.16.4",
+    "ejs": "^2.6.1",
     "http-server": "^0.11.1",
-    "json": "^9.0.6",
-    "sqlite3": "^4.0.6",
-    "ccxt": "^1.18.137"
+    "json": "^9.0.6"
   },
   "devDependencies": {
+    "ccxt": "^1.18.137",
     "chart.js": "^2.7.3",
     "express": "^4.16.4",
     "http-server": "^0.11.1",
     "json": "^9.0.6",
-    "sqlite3": "^4.0.6",
-    "ccxt": "^1.18.137"
+    "sqlite3": "^4.0.6"
   },
   "repository": {
     "type": "git",
