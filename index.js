@@ -725,7 +725,4 @@ app.get("/xmlusdt", function(req, res) {
 
 
 //Start the server
-app.listen(port, process.env.IP, function(){
-
-    console.log("The Arbiter is ONLINE");
-});
+app.listen(process.env.PORT, process.env.IP);
