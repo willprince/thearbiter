@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/Image'));
 //Get landing page
 
 //Depending on the pair studied
-app.get("/btcusdt", function(req, res) {
+app.get("/", function(req, res) {
     var pair = 'BTC/USDT';
     var temp = [];
     var highPrice = 0;
