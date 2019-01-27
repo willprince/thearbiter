@@ -12,10 +12,75 @@ app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/Image'));
 //Get landing page
 app.get("/", function(req,res){
-    console.log("trying");
-    res.render("btcusdt") ;
-});
+    var pair = 'BTC/USDT';
+    var temp = [];
+    var highPrice = 0;
+    var lowPrice = 999999999;
+    var highName = "";
+    var lowName = "";
+    var difference = 0;
+    var marge = 0;
+    var topList = [];
+    //Connect to the database
+    var db = new sqlite3.Database('./venv/arbiter.db');
 
+
+    //Fetch data
+    db.all("with a as(\n" +
+        "select idPair, idEx as idEx1, max(closing) as max\n" +
+        "from pricedata\n" +
+        "group by idPair\n" +
+        "),\n" +
+        "\n" +
+        "b as(\n" +
+        "select idPair, idEx as idEx2, min(closing) as min\n" +
+        "from pricedata\n" +
+        "group by idPair\n" +
+        ")\n" +
+        "\n" +
+        "select *, (max-min) as dif, ((max/min)-1)*100 as marge\n" +
+        "from a join b using(idPair)\n" +
+        "ORDER BY marge desc", function (err, rows) {
+
+        rows.forEach((row)=>{
+            //console.log("sup");
+            temp.push(row);
+        });
+
+        temp.forEach((exchange)=>{
+            if(exchange['idPair'] == pair){
+                highName = exchange['idEx1'];
+                highPrice = exchange['max'];
+                lowName = exchange['idEx2'];
+                lowPrice = exchange['min'];
+                difference = exchange['dif'];
+                marge = exchange['marge'];
+            }
+            topList.push(exchange);
+
+            // if(exchange['price'] > highPrice){
+            //     highPrice = exchange['price'];
+            //     highName = exchange['name'];
+            // }
+            // if(exchange['price'] < lowPrice){
+            //     lowPrice = exchange['price'];
+            //     lowName = exchange['name'];
+            // }
+
+        });
+
+
+
+        res.render("btcusdt", {highName: highName, highPrice : highPrice, lowName : lowName, lowPrice : lowPrice, difference : difference, marge : marge, topList : topList });
+
+        db.close((err) => {
+            if (err) {
+                console.error(err.message);
+            }
+            console.log('Close the database connection.');
+        });
+    });
+});
 //Depending on the pair studied
 app.get("/btcusdt", function(req, res) {
     var pair = 'BTC/USDT';
@@ -436,7 +501,7 @@ app.get("/xrpbtc", function(req, res) {
 
 
         res.render("xrpbtc", {highName: highName, highPrice : highPrice, lowName : lowName, lowPrice : lowPrice, difference : difference, marge : marge, topList : topList });
-btcusdt
+
         db.close((err) => {
             if (err) {
                 console.error(err.message);
