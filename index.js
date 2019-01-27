@@ -12,7 +12,8 @@ app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/Image'));
 //Get landing page
 app.get("/", function(req,res){
-   res.render("btcusdt") ;
+    console.log("trying");
+    res.render("btcusdt") ;
 });
 
 //Depending on the pair studied
@@ -335,7 +336,7 @@ app.get("/xrpusdt", function(req, res) {
         "select *, (max-min) as dif, ((max/min)-1)*100 as marge\n" +
         "from a join b using(idPair)\n" +
         "ORDER BY marge desc", function (err, rows) {
-
+btcusdt
         rows.forEach((row)=>{
             //console.log("sup");
             temp.push(row);
@@ -385,7 +386,7 @@ app.get("/xrpbtc", function(req, res) {
     var difference = 0;
     var marge = 0;
     var topList = [];
-    //Connect to the database
+    //Connect to the databasebtcusdt
     var db = new sqlite3.Database('./venv/arbiter.db');
 
 
@@ -435,7 +436,7 @@ app.get("/xrpbtc", function(req, res) {
 
 
         res.render("xrpbtc", {highName: highName, highPrice : highPrice, lowName : lowName, lowPrice : lowPrice, difference : difference, marge : marge, topList : topList });
-
+btcusdt
         db.close((err) => {
             if (err) {
                 console.error(err.message);
@@ -533,7 +534,7 @@ app.get("/ltcusdt", function(req, res) {
     //Fetch data
     db.all("with a as(\n" +
         "select idPair, idEx as idEx1, max(closing) as max\n" +
-        "from pricedata\n" +
+        "from pricedata\n" +btcusdt
         "group by idPair\n" +
         "),\n" +
         "\n" +
