@@ -534,7 +534,7 @@ app.get("/ltcusdt", function(req, res) {
     //Fetch data
     db.all("with a as(\n" +
         "select idPair, idEx as idEx1, max(closing) as max\n" +
-        "from pricedata\n" +btcusdt
+        "from pricedata\n" +
         "group by idPair\n" +
         "),\n" +
         "\n" +
