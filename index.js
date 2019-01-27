@@ -401,7 +401,7 @@ app.get("/xrpusdt", function(req, res) {
         "select *, (max-min) as dif, ((max/min)-1)*100 as marge\n" +
         "from a join b using(idPair)\n" +
         "ORDER BY marge desc", function (err, rows) {
-btcusdt
+
         rows.forEach((row)=>{
             //console.log("sup");
             temp.push(row);
